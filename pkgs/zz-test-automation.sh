@@ -14,7 +14,7 @@ $VENV/bin/npm install -g appium  # this does not install cleanly on arch...
 if [ "$MOS" == "OSX" ]; then
 $VENV/bin/npm install -g authorize-ios
 $VENV/bin/npm install -g ios-deploy
-sudo $VENV/bin/gem install xcpretty
+$VENV/bin/gem install xcpretty
 fi
 
 # pip install packages for automation support
