@@ -33,6 +33,7 @@ $VENV/bin/pip install py
 $VENV/bin/pip install pytest
 $VENV/bin/pip install selenium
 $VENV/bin/pip install subprocess32
+$VENV/bin/pip install pytest-rerunfailures
 
 # sym-link iproxy since it's the incorrect version
 if [ "$MOS" == "OSX" ]; then
