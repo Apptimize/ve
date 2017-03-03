@@ -1,4 +1,4 @@
-# This is the last package built -- add your dependencies here,
+# This is the second-last package built -- add your dependencies here,
 # python/ruby/node pkgs, etc.
 
 gem install sass --version "=3.4.19"
@@ -34,7 +34,7 @@ fi
 
 fi
 
-for pkg in platform-tools build-tools-23.0.3 android-19 android-22 sys-img-armeabi-v7a-android-19 sys-img-armeabi-v7a-android-22; do
+for pkg in platform-tools build-tools-23.0.3 android-19 android-22 android-23 sys-img-armeabi-v7a-android-19 sys-img-armeabi-v7a-android-22 extra-android-m2repository extra-google-m2repository extra-google-google_play_services; do
 $VENV/android-sdk/tools/android update sdk --no-ui --all --filter "$pkg" <<EOF
 y
 EOF
@@ -78,6 +78,7 @@ rsync -av --progress $RSYNC_USER@$RSYNC_HOST:$RSYNC_PATH/KlassMaster.zip .
 unzip KlassMaster.zip
 rm KlassMaster.zip
 cd $BUILD_DIR
+rm -r $VENV/klassmaster
 mv klassmaster $VENV
 
 # iOS SDK build tools
