@@ -1,6 +1,6 @@
 PHANTOMJS_VERSION="1.9.8"
 
-if [ "$MOS" = "OSX" ]; then
+if [ "$MOS" == "OSX" ]; then
 getpkg https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOMJS_VERSION}-macosx.zip
 unzip phantomjs-${PHANTOMJS_VERSION}-macosx.zip
 mv phantomjs-${PHANTOMJS_VERSION}-macosx/bin/* $VENV/bin/

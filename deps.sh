@@ -15,6 +15,18 @@ if [ "$MOS" == "OSX" ]; then
 # stand by as we migrate away
 # source $SCRIPTPATH/os/osx/fink.sh
 
+    # install some qa dependencies, see RET-1466
+    if [ ! -e /usr/local/bin/brew ]; then
+        echo "homebrew not found, installing homebrew"
+        # install homebrew using macOS system ruby
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+    BREW="/usr/local/bin/brew"
+    $BREW install libimobiledevice --HEAD  # install from HEAD to get important updates
+    $BREW install ideviceinstaller         # only works for ios 9. for ios 10, see below
+    $BREW install carthage
+    $BREW link carthage
+
 # put our own cafile in place
 sudo cp $VENV/lib/python2.7/site-packages/certifi/cacert.pem $($VENV/bin/python -c 'import ssl;print ssl.get_default_verify_paths().openssl_cafile')
 

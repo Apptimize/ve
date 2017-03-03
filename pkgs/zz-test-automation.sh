@@ -9,15 +9,6 @@ unzip chromedriver_linux64.zip
 mv chromedriver $VENV/bin/
 fi
 
-# install homebrew
-if [ "$MOS" == "OSX" ]; then
-$VENV/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-BREW="/usr/local/bin/brew"
-$BREW install libimobiledevice --HEAD  # install from HEAD to get important updates
-$BREW install ideviceinstaller         # only works for ios 9. for ios 10, see below
-$BREW install carthage
-fi
-
 # appium requirements
 $VENV/bin/npm install -g appium  # this does not install cleanly on arch...
 if [ "$MOS" == "OSX" ]; then
@@ -33,6 +24,7 @@ $VENV/bin/pip install py
 $VENV/bin/pip install pytest
 $VENV/bin/pip install selenium
 $VENV/bin/pip install subprocess32
+$VENV/bin/pip install pytest-rerunfailures
 
 # sym-link iproxy since it's the incorrect version
 if [ "$MOS" == "OSX" ]; then
