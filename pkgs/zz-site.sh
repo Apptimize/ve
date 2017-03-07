@@ -17,10 +17,10 @@ mv flyway-3.2.1 $VENV/flyway
 chmod 755 $VENV/flyway/flyway
 
 ANDROID_SDK_VERSION="r24.4.1"
+rm -rf $VENV/android-sdk
 if [ "$MOS" == "OSX" ]; then
 getpkg http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-macosx.zip
 unzip android-sdk_${ANDROID_SDK_VERSION}-macosx.zip
-rm -rf $VENV/android-sdk
 mv android-sdk-macosx $VENV/android-sdk
 else
 getpkg http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
@@ -73,7 +73,11 @@ chmod 755 $VENV/android-sdk/tools/android-wait-for-emulator
 # no results on macOS.  The risk is if there is a file named : in the local
 # directory from which this script is run, it will be affected by the chmod.
 # http://stackoverflow.com/questions/17402345/ignore-empty-results-for-xargs-in-mac-os-x
-(find $VENV/android-sdk/tools -maxdepth 1 -type f -perm 744 || echo :) | xargs chmod 755
+if [ "$MOS" == "OSX" ]; then
+    (find $VENV/android-sdk/tools -maxdepth 1 -type f -perm 744 || echo :) | xargs chmod 755
+else
+    find $VENV/android-sdk/tools -maxdepth 1 -type f -perm 744 | xargs -r chmod 755
+fi    
 
 cd $BUILD_DIR
 mkdir klassmaster
