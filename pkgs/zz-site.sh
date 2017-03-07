@@ -20,6 +20,7 @@ ANDROID_SDK_VERSION="r24.4.1"
 if [ "$MOS" == "OSX" ]; then
 getpkg http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-macosx.zip
 unzip android-sdk_${ANDROID_SDK_VERSION}-macosx.zip
+rm -rf $VENV/android-sdk
 mv android-sdk-macosx $VENV/android-sdk
 else
 getpkg http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
@@ -68,7 +69,11 @@ done
 echo "Emulator is ready"
 EOF
 chmod 755 $VENV/android-sdk/tools/android-wait-for-emulator
-find $VENV/android-sdk/tools -type f -maxdepth 1 -perm 744 | xargs chmod 755
+# Handle macOS by echoing a ":" if find returns nothing, as xargs does not handle
+# no results on macOS.  The risk is if there is a file named : in the local
+# directory from which this script is run, it will be affected by the chmod.
+# http://stackoverflow.com/questions/17402345/ignore-empty-results-for-xargs-in-mac-os-x
+(find $VENV/android-sdk/tools -maxdepth 1 -type f -perm 744 || echo :) | xargs chmod 755
 
 cd $BUILD_DIR
 mkdir klassmaster
@@ -78,7 +83,7 @@ rsync -av --progress $RSYNC_USER@$RSYNC_HOST:$RSYNC_PATH/KlassMaster.zip .
 unzip KlassMaster.zip
 rm KlassMaster.zip
 cd $BUILD_DIR
-rm -r $VENV/klassmaster
+rm -rf $VENV/klassmaster
 mv klassmaster $VENV
 
 # iOS SDK build tools
