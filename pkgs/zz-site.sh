@@ -20,6 +20,7 @@ ANDROID_SDK_VERSION="r24.4.1"
 if [ "$MOS" == "OSX" ]; then
 getpkg http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-macosx.zip
 unzip android-sdk_${ANDROID_SDK_VERSION}-macosx.zip
+rm -rf $VENV/android-sdk
 mv android-sdk-macosx $VENV/android-sdk
 else
 getpkg http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
@@ -78,7 +79,7 @@ rsync -av --progress $RSYNC_USER@$RSYNC_HOST:$RSYNC_PATH/KlassMaster.zip .
 unzip KlassMaster.zip
 rm KlassMaster.zip
 cd $BUILD_DIR
-rm -r $VENV/klassmaster
+rm -rf $VENV/klassmaster
 mv klassmaster $VENV
 
 # iOS SDK build tools
