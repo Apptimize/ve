@@ -1,10 +1,10 @@
 # test automation tooling
 if [ "$MOS" == "OSX" ]; then
-getpkg http://chromedriver.storage.googleapis.com/2.27/chromedriver_mac64.zip
+getpkg http://chromedriver.storage.googleapis.com/2.28/chromedriver_mac64.zip
 unzip chromedriver_mac64.zip
 mv chromedriver $VENV/bin/
 else
-getpkg http://chromedriver.storage.googleapis.com/2.27/chromedriver_linux64.zip
+getpkg http://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 mv chromedriver $VENV/bin/
 fi
