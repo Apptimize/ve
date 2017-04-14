@@ -9,7 +9,7 @@ sed -i -e 's:DEFAULT_PGSOCKET_DIR[ ][ ]*"/tmp":DEFAULT_PGSOCKET_DIR "/data/run/p
 ./configure --prefix=$VENV --with-openssl
 $PMAKE
 make install
-for ext in pgcrypto hstore; do
+for ext in pgcrypto hstore pg_trgm; do
 cd contrib/$ext
 $PMAKE
 make install
