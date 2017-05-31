@@ -100,6 +100,7 @@ mkdir -p $VENV/share/appledoc
 cd $BUILD_DIR
 
 gem install cocoapods
+gem install jazzy
 fi
 
 cd $BUILD_DIR
