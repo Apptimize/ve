@@ -24,7 +24,9 @@ if [ "$MOS" == "OSX" ]; then
     BREW="/usr/local/bin/brew"
     $BREW install libimobiledevice --HEAD  # install from HEAD to get important updates
     $BREW install ideviceinstaller         # only works for ios 9. for ios 10, see below
-    $BREW install carthage
+    if [ ! -e /usr/local/bin/carthage ]; then
+        $BREW install carthage
+    fi
     $BREW link carthage
 
 # put our own cafile in place
