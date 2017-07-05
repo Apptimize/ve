@@ -22,11 +22,12 @@ if [ "$MOS" == "OSX" ]; then
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
     BREW="/usr/local/bin/brew"
-    $BREW install libimobiledevice --HEAD  # install from HEAD to get important updates
-    $BREW install ideviceinstaller         # only works for ios 9. for ios 10, see below
-    if [ ! -e /usr/local/bin/carthage ]; then
-        $BREW install carthage
-    fi
+    # ideviceinstaller only works for ios 9. for ios 10, carthage is installed below
+    $BREW upgrade ideviceinstaller &> /dev/null || $BREW install ideviceinstaller
+    # install from HEAD to get important updates
+    $BREW upgrade libimobiledevice --HEAD &> /dev/null || $BREW install --HEAD libimobiledevice
+    # install carthage
+    $BREW upgrade carthage &> /dev/null || $BREW install carthage
     $BREW link carthage
 
 # put our own cafile in place
