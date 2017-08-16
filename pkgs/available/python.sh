@@ -37,6 +37,7 @@ $PIP install BeautifulSoup
 $PIP install bleach
 $PIP install boto
 $PIP install boto3
+$PIP install bumpversion
 $PIP install certifi
 $PIP install coverage
 $PIP install cython
