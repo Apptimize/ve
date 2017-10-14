@@ -23,12 +23,13 @@ if [ "$MOS" == "OSX" ]; then
     fi
     BREW="/usr/local/bin/brew"
     # ideviceinstaller only works for ios 9. for ios 10, carthage is installed below
-    $BREW upgrade ideviceinstaller &> /dev/null || $BREW install ideviceinstaller
+    $BREW uninstall ideviceinstaller &> /dev/null; $BREW install ideviceinstaller
+    # install ios-deploy using brew, not npm
+    $BREW uninstall ios-deploy &> /dev/null; $BREW install --HEAD ios-deploy
     # install from HEAD to get important updates
-    $BREW upgrade libimobiledevice --HEAD &> /dev/null || $BREW install --HEAD libimobiledevice
+    $BREW uninstall libimobiledevice --HEAD &> /dev/null; $BREW install --HEAD libimobiledevice
     # install carthage
-    $BREW upgrade carthage &> /dev/null || $BREW install carthage
-    $BREW link carthage
+    $BREW uninstall carthage &> /dev/null; $BREW install carthage
 
 # put our own cafile in place
 sudo cp $VENV/lib/python2.7/site-packages/certifi/cacert.pem $($VENV/bin/python -c 'import ssl;print ssl.get_default_verify_paths().openssl_cafile')
