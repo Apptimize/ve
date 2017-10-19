@@ -1,13 +1,4 @@
 # test automation tooling
-if [ "$MOS" == "OSX" ]; then
-    getpkg http://chromedriver.storage.googleapis.com/2.30/chromedriver_mac64.zip
-    unzip chromedriver_mac64.zip
-    mv chromedriver $VENV/bin/
-else
-    getpkg http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip
-    unzip chromedriver_linux64.zip
-    mv chromedriver $VENV/bin/
-fi
 
 # appium requirements
 $VENV/bin/npm uninstall -g appium
@@ -31,4 +22,11 @@ $VENV/bin/pip install pytest-rerunfailures
 if [ "$MOS" == "OSX" ]; then
     sudo mv /sw/bin/iproxy /sw/bin/iproxy_old
     sudo ln -s /ave/bin/iproxy /sw/bin/iproxy
+fi
+
+# sym-link to chromedriver
+if [ "$MOS" == "OSX" ]; then
+    sudo ln -sf $VENV/lib/node_modules/appium/node_modules/appium-chromedriver/chromedriver/mac/chromedriver $VENV/bin/chromedriver
+else
+    sudo ln -sf $VENV/lib/node_modules/appium/node_modules/appium-chromedriver/chromedriver/linux/chromedriver $VENV/bin/chromedriver_64
 fi
