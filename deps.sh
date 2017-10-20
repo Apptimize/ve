@@ -30,10 +30,13 @@ if [ "$MOS" == "OSX" ]; then
     $BREW install ios-deploy
     # install from HEAD to get important updates
     $BREW uninstall --force libimobiledevice &> /dev/null || true
-    $BREW install libimobiledevice
+    $BREW install --HEAD libimobiledevice
     # install carthage
     $BREW uninstall --force carthage &> /dev/null || true
     $BREW install carthage
+
+    # prevent libimobiledevice errors
+    sudo chmod -R 777 /var/db/lockdown
 
     # put our own cafile in place
     sudo cp $VENV/lib/python2.7/site-packages/certifi/cacert.pem $($VENV/bin/python -c 'import ssl;print ssl.get_default_verify_paths().openssl_cafile')
