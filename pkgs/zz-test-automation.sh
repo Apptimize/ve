@@ -38,17 +38,17 @@ $VENV/bin/npm install -g appium@1.7.1  # this does not install cleanly on arch..
 if [ "$MOS" == "OSX" ]; then
     $VENV/bin/npm uninstall -g authorize-ios
     $VENV/bin/npm install -g authorize-ios@1.0.5
-    $VENV/bin/gem install xcpretty
+    $VENV/bin/gem install xcpretty --version 0.2.8
 fi
 
 # pip install packages for automation support
-$VENV/bin/pip install Appium-Python-Client
-$VENV/bin/pip install enum34
-$VENV/bin/pip install py
-$VENV/bin/pip install pytest
-$VENV/bin/pip install selenium
-$VENV/bin/pip install subprocess32
-$VENV/bin/pip install pytest-rerunfailures
+$VENV/bin/pip install Appium-Python-Client==0.25
+$VENV/bin/pip install enum34==1.1.6
+$VENV/bin/pip install py==1.5.2
+$VENV/bin/pip install pytest==3.2.5
+$VENV/bin/pip install selenium==3.7.0
+$VENV/bin/pip install subprocess32==3.2.7
+$VENV/bin/pip install pytest-rerunfailures==3.1
 
 # sym-link iproxy since it's the incorrect version
 if [ "$MOS" == "OSX" ]; then
