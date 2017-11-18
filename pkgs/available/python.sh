@@ -56,7 +56,8 @@ $PIP install versiontools  # ssl cert validation fail when installed in gevent-s
 $PIP install git+https://github.com/abourget/gevent-socketio.git
 
 $PIP install git+https://github.com/benoitc/gunicorn.git
-$PIP install git+https://github.com/mattbillenstein/flask-classy.git
+$PIP install flask-classy
+$PIP install flask-classful
 $PIP install git+https://github.com/mattbillenstein/gstatsd
 $PIP install gitpython
 $PIP install google-api-python-client
