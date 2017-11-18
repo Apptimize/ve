@@ -10,9 +10,8 @@ source $SCRIPTPATH/config.sh
 
 if [ "$MOS" == "OSX" ]; then
 
-    # disabling fink!
-    # some problems with sierra + general unhappiness with slowness/flakiness
-    # stand by as we migrate away
+    # TODO: RET-1466: Replace fink with brew in ave
+    # RET-943: disabling fink!
     # source $SCRIPTPATH/os/osx/fink.sh
 
     # install homebrew
@@ -21,7 +20,6 @@ if [ "$MOS" == "OSX" ]; then
         # install homebrew using macOS system ruby
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
-
 
     # put our own cafile in place
     sudo cp $VENV/lib/python2.7/site-packages/certifi/cacert.pem $($VENV/bin/python -c 'import ssl;print ssl.get_default_verify_paths().openssl_cafile')
