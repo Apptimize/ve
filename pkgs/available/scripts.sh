@@ -79,12 +79,6 @@ export ANDROID_HOME
 export PATH="\$PATH:\$VIRTUAL_ENV/android-sdk/tools:\$VIRTUAL_ENV/android-sdk/platform-tools"
 fi
 
-# add homebrew to path if it is not found
-brew --version &> /dev/null
-if [ $? -ne 0]; then
-export PATH="/usr/local/bin:\$PATH"
-fi
-
 # fink
 if [ -e '/sw/bin/init.sh' ]; then
 . /sw/bin/init.sh
