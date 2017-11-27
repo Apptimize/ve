@@ -74,7 +74,7 @@ fi
 
 echo "System Link Report:"
 if [ "$MOS" == "OSX" ]; then
-/Library/Developer/CommandLineTools/usr/bin/otool-classic -L $VENV/bin/* 2>&1 | egrep -v ':$' | sort | uniq -c | sort -k1n | grep -v "$VENV"
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic -L $VENV/bin/* 2>&1 | egrep -v ':$' | sort | uniq -c | sort -k1n | grep -v "$VENV"
 else
 ldd $VENV/bin/* | grep '=>' | awk '{print $1, $2, $3}' | grep -v vdso.so.1 | sort | uniq -c | sort -k1n | grep -v "$VENV"
 fi
