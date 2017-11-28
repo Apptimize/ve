@@ -29,10 +29,10 @@ if [ "$MOS" == "OSX" ]; then
     $BREW install ideviceinstaller
     # install ios-deploy using brew, not npm
     $BREW install ios-deploy
-fi
 
-# prevent libimobiledevice errors
-sudo chmod -R 777 /var/db/lockdown
+    # prevent libimobiledevice errors
+    sudo chmod -R 777 /var/db/lockdown
+fi
 
 # appium requirements
 $VENV/bin/npm uninstall -g appium
