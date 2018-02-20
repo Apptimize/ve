@@ -35,8 +35,8 @@ $PIP install bcrypt
 $PIP install beanstalkc
 $PIP install BeautifulSoup
 $PIP install bleach
-$PIP install boto>=2.38.0
-$PIP install boto3>=1.5.27
+$PIP install 'boto>=2.38.0'
+$PIP install 'boto3>=1.5.27'
 $PIP install bumpversion
 $PIP install certifi
 $PIP install coverage
@@ -44,9 +44,9 @@ $PIP install cython
 $PIP install decorator
 $PIP install dill
 $PIP install dnspython
-$PIP install docker>=3.0.1
+$PIP install 'docker>=3.0.1'
 $PIP install docutils
-$PIP install fabric>=1.10.2
+$PIP install 'fabric>=1.10.2'
 $PIP install flask
 $PIP install flask-assets
 $PIP install Flask-Mako
@@ -88,7 +88,7 @@ $PIP install PyPDF2
 $PIP install pytz
 $PIP install raven
 $PIP install redis
-$PIP install requests[security]>=2.9.1  # [security] adds additional packages
+$PIP install 'requests[security]>=2.9.1'  # [security] adds additional packages
 $PIP install salt
 $PIP install saws
 # scipy defines these - can't override them
