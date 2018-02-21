@@ -29,6 +29,7 @@ PIP="$VENV/bin/pip"
 $PIP install ansible
 $PIP install arrow
 $PIP install -U 'awscli>=1.11.116'
+$PIP install 'jinja2==2.8.1'
 $PIP install babel
 $PIP install baker
 $PIP install bcrypt
