@@ -1,10 +1,10 @@
 # test automation tooling
 if [ "$MOS" == "OSX" ]; then
-    getpkg https://chromedriver.storage.googleapis.com/2.33/chromedriver_mac64.zip
+    getpkg https://chromedriver.storage.googleapis.com/2.40/chromedriver_mac64.zip
     unzip chromedriver_mac64.zip
     mv chromedriver $VENV/bin/
 else
-    getpkg https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
+    getpkg https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
     mv chromedriver $VENV/bin/
 fi
@@ -36,7 +36,7 @@ fi
 
 # appium requirements
 $VENV/bin/npm uninstall -g appium
-$VENV/bin/npm install -g appium@1.7.1  # this does not install cleanly on arch...
+$VENV/bin/npm install -g appium@1.8.1  # this does not install cleanly on arch...
 if [ "$MOS" == "OSX" ]; then
     $VENV/bin/npm uninstall -g authorize-ios
     $VENV/bin/npm install -g authorize-ios@1.0.5
@@ -44,7 +44,7 @@ if [ "$MOS" == "OSX" ]; then
 fi
 
 # pip install packages for automation support
-$VENV/bin/pip install Appium-Python-Client==0.25
+$VENV/bin/pip install Appium-Python-Client==0.26
 $VENV/bin/pip install enum34==1.1.6
 $VENV/bin/pip install py==1.5.2
 $VENV/bin/pip install pytest==3.2.5
