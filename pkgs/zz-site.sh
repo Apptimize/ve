@@ -83,7 +83,7 @@ cd $BUILD_DIR
 mkdir klassmaster
 cd klassmaster
 RSYNC_PASSWORD="fdc30617-6818-47fb-bb81-245c73777dda" \
-rsync -av --progress $RSYNC_USER@$RSYNC_HOST:$RSYNC_PATH/KlassMaster.zip .
+rsync -av --progress $RSYNC_USER@$RSYNC_HOST::$RSYNC_PATH/KlassMaster.zip .
 unzip KlassMaster.zip
 rm KlassMaster.zip
 cd $BUILD_DIR
