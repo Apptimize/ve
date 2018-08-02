@@ -94,7 +94,7 @@ boto==2.47.0
 botocore==1.6.2           # via awscli, boto3, s3transfer
 certifi==2017.7.27.1
 cffi==1.10.0              # via azure-datalake-store, bcrypt, cryptography, pynacl
-chardet==3.0.4            # via requests
+chardet==3.0.4
 click==6.7                # via pip-tools
 colorama==0.3.7           # via awscli
 configparser==3.5.0       # via entrypoints
@@ -152,6 +152,7 @@ pymysql==0.7.11
 pynacl==1.1.2
 pyopenssl==17.0.0         # via gcs-oauth2-boto-plugin, gsutil
 python-dateutil==2.6.1    # via adal, azure-cosmosdb-table, azure-storage-common, botocore
+python-debian==0.1.32
 python-gflags==3.1.1      # via gsutil
 pytz==2017.2
 pyyaml==3.12
@@ -162,10 +163,9 @@ retry-decorator==1.1.0    # via gcs-oauth2-boto-plugin, gsutil
 rsa==3.4.2                # via awscli, oauth2client
 s3transfer==0.1.10        # via awscli, boto3
 scandir==1.5              # via pathlib2
-secretstorage==2.3.1      # via keyring
 selenium==3.13.0          # via appium-python-client
 simplejson==3.11.1
-six==1.10.0               # via bcrypt, cryptography, docker, docker-pycreds, gcs-oauth2-boto-plugin, google-api-python-client, google-apitools, gsutil, isodate, mock, oauth2client, pathlib2, pip-tools, protobuf, pynacl, pyopenssl, python-dateutil, websocket-client
+six==1.10.0               # via bcrypt, cryptography, docker, docker-pycreds, gcs-oauth2-boto-plugin, google-api-python-client, google-apitools, gsutil, isodate, mock, oauth2client, pathlib2, pip-tools, protobuf, pynacl, pyopenssl, python-dateutil, python-debian, websocket-client
 smmap2==2.0.3             # via gitdb2
 socksipy-branch==1.01     # via gcs-oauth2-boto-plugin, gsutil
 supervisor==3.3.3

@@ -1,4 +1,4 @@
-YARN_VERSION="1.0.1"
+YARN_VERSION="1.7.0"
 
 rm -fR $VENV/opt/yarn $VENV/bin/yarn
 getpkg https://github.com/yarnpkg/yarn/releases/download/v${YARN_VERSION}/yarn-v${YARN_VERSION}.tar.gz

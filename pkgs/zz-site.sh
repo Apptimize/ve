@@ -103,25 +103,5 @@ gem install cocoapods
 gem install jazzy
 fi
 
-cd $BUILD_DIR
-PROTOBUF_VERSION="2.6.1"
-getpkg https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protobuf-${PROTOBUF_VERSION}.tar.gz
-tar zxf protobuf-${PROTOBUF_VERSION}.tar.gz
-cd protobuf-${PROTOBUF_VERSION}
-./configure --prefix=$VENV
-$PMAKE install
-$VENV/bin/pip install protobuf
-
-# pkgs for dealing with tweak debian repos
-$VENV/bin/pip install chardet python-debian
-
-cd $BUILD_DIR
-# pypy pkgs
-$VENV/pypy/bin/pip install protobuf pynsq google-api-python-client
-
 # azure tooling
 npm install -g azure-cli
-$VENV/bin/pip install --pre azure
-
-# yarn
-npm install -g yarn
