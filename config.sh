@@ -21,7 +21,7 @@ elif [ -f /etc/pacman.conf ]; then
     PROCS=$(grep -c '^processor' /proc/cpuinfo)
 elif [ "$(lsb_release -si)" == "Ubuntu" ]; then
     ver="$(lsb_release -sr)"
-    if [ "$ver" != "14.04" ] && [ "$ver" != "16.04" ]; then
+    if [ "$ver" != "16.04" ] && [ "$ver" != "18.04" ]; then
         echo "It's recommended to run on an Ubuntu LTS release ($ver)-- do you want to continue?  (Ctrl-C aborts)"
         read foo
     fi
@@ -44,7 +44,7 @@ function getpkg() {
     mkdir -p $PKG_CACHE
 
     if [ ! -f "$PKG_CACHE/$FILENAME" ]; then
-        curl -s -L -o "$PKG_CACHE/$FILENAME" $URL
+        curl -s -L --retry 2 --retry-delay 10 -o "$PKG_CACHE/$FILENAME" $URL
     fi
     cp "$PKG_CACHE/$FILENAME" $DST
 }
@@ -61,14 +61,9 @@ popd > /dev/null
 source $SCRIPTPATH/config_local.sh
 
 export PATH="$VENV/bin:$PATH"
-export CFLAGS="-I$VENV/include -I/sw/include"
-export CPPFLAGS=$CFLAGS
-export CXXFLAGS=$CFLAGS
-export LDFLAGS="-L. -L$VENV/lib -L/sw/lib"
+export CFLAGS=""
+export CPPFLAGS="-I$VENV/include"
+export CXXFLAGS="$CFLAGS"
+export LDFLAGS="-L. -L$VENV/lib"
 export LD_LIBRARY_PATH="$VENV/lib"
 export PKG_CONFIG_PATH="$VENV/lib/pkgconfig"
-
-# clang doesn't like arguments it doesn't use
-if [ "$MOS" == "OSX" ]; then
-export CFLAGS="-Qunused-arguments $CFLAGS"
-fi

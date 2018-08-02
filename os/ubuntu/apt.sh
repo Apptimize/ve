@@ -2,8 +2,12 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
+unset UCF_FORCE_CONFFOLD
+export UCF_FORCE_CONFFNEW=YES
+sudo ucf --purge /boot/grub/menu.lst
+
 sudo apt-get update
-sudo apt-get -y upgrade
+sudo apt-get -y --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
 
 sudo apt-get -y install \
 acpid \
@@ -26,6 +30,7 @@ gcc \
 gettext \
 gfortran \
 git-core \
+jq \
 libtool \
 lsof \
 make \
@@ -34,7 +39,6 @@ maven \
 ntp \
 numactl \
 pigz \
-pdftk \
 pkg-config \
 psmisc \
 python-dev \
@@ -59,12 +63,15 @@ libcurl4-openssl-dev \
 libevent-dev \
 libffi-dev \
 libfreetype6-dev \
+libicu-dev \
 libjpeg-dev \
 libncurses5-dev \
+libpcap-dev \
 libpcre3-dev \
-libpng12-dev \
+libperl-dev \
+libpng-dev \
 libreadline-dev \
-libreadline6 \
+libreadline7 \
 libssl-dev \
 libsqlite3-dev \
 libuuid1 \
