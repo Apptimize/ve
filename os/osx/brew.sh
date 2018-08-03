@@ -70,6 +70,13 @@ wget \
 xz \
 zlib
 
+# test automation stuff
+$BREW install \
+carthage \
+libimobiledevice \
+ideviceinstaller \
+ios-deploy
+
 # clang doesn't like arguments it doesn't use
 export CFLAGS="-Qunused-arguments $CFLAGS"
 

@@ -17,6 +17,7 @@ datadog
 decorator
 dnspython
 docker
+enum34
 gevent
 google-api-python-client
 gstatsd
@@ -27,9 +28,14 @@ pip-tools
 protobuf
 psutil
 psycopg2-binary
+py
+pytest
+pytest-rerunfailures
 python-debian
 pytz
 redis
 requests
+selenium
 simplejson
+subprocess32
 supervisor

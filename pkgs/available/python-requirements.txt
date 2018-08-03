@@ -9,6 +9,8 @@ ansible==2.0.2.0
 appium-python-client==0.26
 argcomplete==1.8.2        # via gsutil
 asn1crypto==0.22.0        # via cryptography
+atomicwrites==1.1.5       # via pytest
+attrs==18.1.0             # via pytest
 awscli==1.11.135
 azure-batch==4.1.3        # via azure
 azure-common==1.1.12      # via azure-batch, azure-cosmosdb-table, azure-eventgrid, azure-graphrbac, azure-keyvault, azure-mgmt-advisor, azure-mgmt-applicationinsights, azure-mgmt-authorization, azure-mgmt-batch, azure-mgmt-batchai, azure-mgmt-billing, azure-mgmt-cdn, azure-mgmt-cognitiveservices, azure-mgmt-commerce, azure-mgmt-compute, azure-mgmt-consumption, azure-mgmt-containerinstance, azure-mgmt-containerregistry, azure-mgmt-containerservice, azure-mgmt-cosmosdb, azure-mgmt-datafactory, azure-mgmt-datalake-analytics, azure-mgmt-datalake-store, azure-mgmt-devtestlabs, azure-mgmt-dns, azure-mgmt-eventgrid, azure-mgmt-eventhub, azure-mgmt-hanaonazure, azure-mgmt-iothub, azure-mgmt-iothubprovisioningservices, azure-mgmt-keyvault, azure-mgmt-loganalytics, azure-mgmt-logic, azure-mgmt-machinelearningcompute, azure-mgmt-managementpartner, azure-mgmt-marketplaceordering, azure-mgmt-media, azure-mgmt-monitor, azure-mgmt-msi, azure-mgmt-network, azure-mgmt-notificationhubs, azure-mgmt-powerbiembedded, azure-mgmt-rdbms, azure-mgmt-recoveryservices, azure-mgmt-recoveryservicesbackup, azure-mgmt-redis, azure-mgmt-relay, azure-mgmt-reservations, azure-mgmt-resource, azure-mgmt-scheduler, azure-mgmt-search, azure-mgmt-servermanager, azure-mgmt-servicebus, azure-mgmt-servicefabric, azure-mgmt-sql, azure-mgmt-storage, azure-mgmt-subscription, azure-mgmt-trafficmanager, azure-mgmt-web, azure-servicebus, azure-servicefabric, azure-servicemanagement-legacy, azure-storage-blob, azure-storage-common, azure-storage-file, azure-storage-queue
@@ -107,9 +109,9 @@ docker-pycreds==0.3.0     # via docker
 docker==3.4.0
 docutils==0.14            # via awscli, botocore
 entrypoints==0.2.3        # via keyring
-enum34==1.1.6             # via cryptography, msrest
+enum34==1.1.6
 first==2.0.1              # via pip-tools
-funcsigs==1.0.2           # via mock
+funcsigs==1.0.2           # via mock, pytest
 futures==3.1.1            # via azure-cosmosdb-table, azure-datalake-store, azure-storage-blob, azure-storage-file, s3transfer
 gcs-oauth2-boto-plugin==1.14  # via gsutil
 gevent==1.2.2
@@ -132,6 +134,7 @@ linode-python==1.1.1
 markupsafe==1.0           # via jinja2
 meld3==1.0.2              # via supervisor
 mock==2.0.0               # via gsutil
+more-itertools==4.2.0     # via pytest
 msrest==0.5.1             # via azure-eventgrid, azure-servicefabric, msrestazure
 msrestazure==0.4.33       # via azure-batch, azure-graphrbac, azure-keyvault, azure-mgmt-advisor, azure-mgmt-applicationinsights, azure-mgmt-authorization, azure-mgmt-batch, azure-mgmt-batchai, azure-mgmt-billing, azure-mgmt-cdn, azure-mgmt-cognitiveservices, azure-mgmt-commerce, azure-mgmt-compute, azure-mgmt-consumption, azure-mgmt-containerinstance, azure-mgmt-containerregistry, azure-mgmt-containerservice, azure-mgmt-cosmosdb, azure-mgmt-datafactory, azure-mgmt-datalake-analytics, azure-mgmt-datalake-store, azure-mgmt-devtestlabs, azure-mgmt-dns, azure-mgmt-eventgrid, azure-mgmt-eventhub, azure-mgmt-hanaonazure, azure-mgmt-iothub, azure-mgmt-iothubprovisioningservices, azure-mgmt-keyvault, azure-mgmt-loganalytics, azure-mgmt-logic, azure-mgmt-machinelearningcompute, azure-mgmt-managementpartner, azure-mgmt-marketplaceordering, azure-mgmt-media, azure-mgmt-monitor, azure-mgmt-msi, azure-mgmt-network, azure-mgmt-notificationhubs, azure-mgmt-powerbiembedded, azure-mgmt-rdbms, azure-mgmt-recoveryservices, azure-mgmt-recoveryservicesbackup, azure-mgmt-redis, azure-mgmt-relay, azure-mgmt-reservations, azure-mgmt-resource, azure-mgmt-scheduler, azure-mgmt-search, azure-mgmt-servermanager, azure-mgmt-servicebus, azure-mgmt-servicefabric, azure-mgmt-sql, azure-mgmt-storage, azure-mgmt-subscription, azure-mgmt-trafficmanager, azure-mgmt-web
 oauth2client==2.2.0       # via gcs-oauth2-boto-plugin, google-api-python-client, google-apitools, gsutil
@@ -140,9 +143,11 @@ paramiko==2.2.1           # via ansible
 pathlib2==2.3.0           # via azure-datalake-store
 pbr==3.1.1                # via mock
 pip-tools==1.9.0
+pluggy==0.6.0             # via pytest
 protobuf==3.6.0
 psutil==5.2.2
 psycopg2-binary==2.7.5
+py==1.5.3
 pyasn1-modules==0.0.11    # via oauth2client
 pyasn1==0.3.2             # via oauth2client, paramiko, pyasn1-modules, rsa
 pycparser==2.18           # via cffi
@@ -151,6 +156,8 @@ pyjwt==1.5.2              # via adal
 pymysql==0.7.11
 pynacl==1.1.2
 pyopenssl==17.0.0         # via gcs-oauth2-boto-plugin, gsutil
+pytest-rerunfailures==4.1
+pytest==3.6.2
 python-dateutil==2.6.1    # via adal, azure-cosmosdb-table, azure-storage-common, botocore
 python-debian==0.1.32
 python-gflags==3.1.1      # via gsutil
@@ -163,11 +170,12 @@ retry-decorator==1.1.0    # via gcs-oauth2-boto-plugin, gsutil
 rsa==3.4.2                # via awscli, oauth2client
 s3transfer==0.1.10        # via awscli, boto3
 scandir==1.5              # via pathlib2
-selenium==3.13.0          # via appium-python-client
+selenium==3.13.0
 simplejson==3.11.1
-six==1.10.0               # via bcrypt, cryptography, docker, docker-pycreds, gcs-oauth2-boto-plugin, google-api-python-client, google-apitools, gsutil, isodate, mock, oauth2client, pathlib2, pip-tools, protobuf, pynacl, pyopenssl, python-dateutil, python-debian, websocket-client
+six==1.10.0               # via bcrypt, cryptography, docker, docker-pycreds, gcs-oauth2-boto-plugin, google-api-python-client, google-apitools, gsutil, isodate, mock, more-itertools, oauth2client, pathlib2, pip-tools, protobuf, pynacl, pyopenssl, pytest, python-dateutil, python-debian, websocket-client
 smmap2==2.0.3             # via gitdb2
 socksipy-branch==1.01     # via gcs-oauth2-boto-plugin, gsutil
+subprocess32==3.5.2
 supervisor==3.3.3
 typing==3.6.2             # via msrest
 uritemplate==3.0.0        # via google-api-python-client
