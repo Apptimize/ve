@@ -5,7 +5,7 @@ GitPython
 PyMySQL
 PyNaCl
 PyYAML
-ansible==2.0.2.0
+ansible
 awscli
 azure
 boto
