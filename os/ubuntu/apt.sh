@@ -23,6 +23,7 @@ curl \
 default-jdk \
 default-jre-headless \
 dnsutils \
+docker \
 expect \
 fortune \
 g++ \

@@ -28,6 +28,7 @@ cmake \
 coreutils \
 cowsay \
 curl \
+docker \
 expat \
 file-formula \
 findutils \
