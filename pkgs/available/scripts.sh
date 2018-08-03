@@ -83,7 +83,7 @@ fi
 
 # add homebrew to path if it is not found
 brew --version &> /dev/null
-if [ $? -ne 0]; then
+if [ \$? -ne 0 ]; then
 export PATH="/usr/local/bin:\$PATH"
 fi
 
