@@ -82,8 +82,7 @@ export PATH="\$PATH:\$VIRTUAL_ENV/android-sdk/tools:\$VIRTUAL_ENV/android-sdk/pl
 fi
 
 # add homebrew to path if it is not found
-brew --version &> /dev/null
-if [ \$? -ne 0 ]; then
+if [ "\$(which brew)" != "" ]; then
 export PATH="/usr/local/bin:\$PATH"
 fi
 
