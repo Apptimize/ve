@@ -82,5 +82,4 @@ zlib1g-dev
 
 sudo locale-gen en_US.UTF-8
 
-update-java-alternatives --set java-1.8.0-openjdk-amd64
-
+sudo update-java-alternatives --set java-1.8.0-openjdk-amd64
