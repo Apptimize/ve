@@ -54,6 +54,7 @@ libpng \
 libtool \
 libxml2 \
 make \
+maven \
 ncurses \
 openssl \
 ossp-uuid \
