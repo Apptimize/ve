@@ -20,8 +20,6 @@ build-essential \
 cmake \
 cowsay \
 curl \
-default-jdk \
-default-jre-headless \
 dnsutils \
 docker \
 expect \
@@ -39,6 +37,7 @@ man-db \
 maven \
 ntp \
 numactl \
+openjdk-8-jdk \
 pigz \
 pkg-config \
 psmisc \
@@ -82,3 +81,6 @@ uuid-dev \
 zlib1g-dev
 
 sudo locale-gen en_US.UTF-8
+
+update-java-alternatives --set java-1.8.0-openjdk-amd64
+
