@@ -39,3 +39,4 @@ selenium
 simplejson
 subprocess32
 supervisor
+supervisor-wildcards
