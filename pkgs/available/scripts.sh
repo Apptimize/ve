@@ -81,8 +81,8 @@ export ANDROID_HOME
 export PATH="\$PATH:\$VIRTUAL_ENV/android-sdk/tools:\$VIRTUAL_ENV/android-sdk/platform-tools"
 fi
 
-# add homebrew to path if it is not found
-if [ "\$(which brew)" != "" ]; then
+# add /usr/local/bin to path for homebrew if it exists
+if [ -e /usr/local/bin ]; then
 export PATH="/usr/local/bin:\$PATH"
 fi
 
