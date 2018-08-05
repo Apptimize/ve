@@ -58,6 +58,11 @@ deactivate nondestructive
 VIRTUAL_ENV="$VENV"
 export VIRTUAL_ENV
 
+# add /usr/local/bin to path for homebrew if it exists
+if [ -e /usr/local/bin ]; then
+export PATH="/usr/local/bin:\$PATH"
+fi
+
 _OLD_VIRTUAL_PATH="\$PATH"
 PATH="\$VIRTUAL_ENV/bin:\$PATH"
 if [ -e "\$VIRTUAL_ENV/opt/go" ]; then
@@ -79,11 +84,6 @@ if [ -e "\$VIRTUAL_ENV/android-sdk" ]; then
 ANDROID_HOME="\$VIRTUAL_ENV/android-sdk"
 export ANDROID_HOME
 export PATH="\$PATH:\$VIRTUAL_ENV/android-sdk/tools:\$VIRTUAL_ENV/android-sdk/platform-tools"
-fi
-
-# add /usr/local/bin to path for homebrew if it exists
-if [ -e /usr/local/bin ]; then
-export PATH="/usr/local/bin:\$PATH"
 fi
 
 _OLD_VIRTUAL_PYTHONPATH="\$PYTHONPATH"
