@@ -69,7 +69,7 @@ vim \
 webp \
 wget \
 xz \
-zlib
+zlib || true
 
 $BREW cask install docker
 
