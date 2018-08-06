@@ -28,7 +28,6 @@ cmake \
 coreutils \
 cowsay \
 curl \
-docker \
 expat \
 file-formula \
 findutils \
@@ -71,6 +70,8 @@ webp \
 wget \
 xz \
 zlib
+
+$BREW cask install docker
 
 # test automation stuff
 $BREW install \
