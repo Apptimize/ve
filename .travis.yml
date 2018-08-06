@@ -4,4 +4,5 @@ os: osx
 osx_image: xcode9.4
 
 script:
-  - travis_wait 100 ./build.sh --clean
+  - travis_wait 200 ./build.sh --clean &> /tmp/build.log
+  - tail -n 1000 /tmp/build.log
