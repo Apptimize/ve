@@ -72,14 +72,14 @@ wget \
 xz \
 zlib || true
 
-$BREW cask install docker
+$BREW cask install docker || true
 
 # test automation stuff
 $BREW install \
 carthage \
 libimobiledevice \
 ideviceinstaller \
-ios-deploy
+ios-deploy || true
 
 # clang doesn't like arguments it doesn't use
 export CFLAGS="-Qunused-arguments $CFLAGS"
