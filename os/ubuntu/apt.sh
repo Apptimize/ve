@@ -7,7 +7,7 @@ export UCF_FORCE_CONFFNEW=YES
 sudo ucf --purge /boot/grub/menu.lst
 
 sudo apt-get update
-sudo apt-get -y --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
+sudo DEBIAN_FRONTEND=noninteractive apt-get -fuy --force-yes -o Dpkg::Options::="--force-confnew" upgrade
 
 sudo apt-get -y install \
 acpid \
