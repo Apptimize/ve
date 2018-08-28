@@ -42,7 +42,6 @@ git \
 gnu-sed \
 gnu-tar \
 gzip \
-https://raw.githubusercontent.com/youtux/homebrew-binary/pdftk/pdftk.rb \
 icu4c \
 jq \
 libevent \
@@ -70,16 +69,19 @@ vim \
 webp \
 wget \
 xz \
-zlib || true
+zlib
 
-$BREW cask install docker || true
+if [ ! -e /Applications/Xcode.app ]; then
+    $BREW cask install docker
+fi
 
 # test automation stuff
 $BREW install \
 carthage \
-libimobiledevice \
 ideviceinstaller \
-ios-deploy || true
+ios-deploy
+
+$BREW install --HEAD libimobiledevice
 
 # clang doesn't like arguments it doesn't use
 export CFLAGS="-Qunused-arguments $CFLAGS"
