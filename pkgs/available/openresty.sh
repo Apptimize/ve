@@ -1,4 +1,5 @@
 OPENRESTY_VERSION="1.11.2.4"
+NGINX_VERSION="1.11.2"
 rm -fR openresty-${OPENRESTY_VERSION}* ngx_* nginx_*
 
 git clone https://github.com/yaoweibin/nginx_upstream_check_module.git
@@ -15,7 +16,7 @@ cd $BUILD_DIR
 getpkg https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz
 tar zxf openresty-${OPENRESTY_VERSION}.tar.gz
 
-cd openresty-${OPENRESTY_VERSION}/bundle/nginx-1.13.6
+cd openresty-${OPENRESTY_VERSION}/bundle/nginx-${NGINX_VERSION}
 patch -p1 < $BUILD_DIR/nginx_upstream_check_module/check_1.12.1+.patch
 cd $BUILD_DIR
 cd openresty-${OPENRESTY_VERSION}
