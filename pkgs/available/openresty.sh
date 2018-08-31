@@ -1,5 +1,5 @@
 OPENRESTY_VERSION="1.13.6.2"
-rm -fR openresty-${OPENRESTY_VERSION}* ngx_* nginx_*
+rm -fR openresty-${OPENRESTY_VERSION}* ngx_* nginx_* openssl-*
 
 git clone https://github.com/yaoweibin/nginx_upstream_check_module.git
 cd nginx_upstream_check_module
@@ -18,13 +18,14 @@ tar zxf openresty-${OPENRESTY_VERSION}.tar.gz
 cd openresty-${OPENRESTY_VERSION}/bundle/nginx-1.13.6
 patch -p1 < $BUILD_DIR/nginx_upstream_check_module/check_1.12.1+.patch
 cd $BUILD_DIR
-cd openresty-${OPENRESTY_VERSION}
 
 # Use openssl 1.0.2 - 1.1.0 on Ubuntu doesn't support SSLv2Hello needed by some
 # old Java 6 clients...
 OPENSSL_VERSION="1.0.2p"
 getpkg https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar zxf openssl-${OPENSSL_VERSION}.tar.gz
+
+cd openresty-${OPENRESTY_VERSION}
 
 ./configure --prefix=$VENV/opt/openresty \
 --with-openssl=$BUILD_DIR/openssl-${OPENSSL_VERSION} \
