@@ -76,12 +76,12 @@ if [ ! -e /Applications/Xcode.app ]; then
 fi
 
 # test automation stuff
+$BREW install --HEAD libimobiledevice
+
 $BREW install \
 carthage \
 ideviceinstaller \
 ios-deploy
-
-$BREW install --HEAD libimobiledevice
 
 # clang doesn't like arguments it doesn't use
 export CFLAGS="-Qunused-arguments $CFLAGS"
