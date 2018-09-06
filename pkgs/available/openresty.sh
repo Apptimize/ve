@@ -1,26 +1,34 @@
-OPENRESTY_VERSION="1.11.2.4"
-rm -fR openresty-${OPENRESTY_VERSION}* ngx_* nginx_*
+OPENRESTY_VERSION="1.13.6.2"
+rm -fR openresty-${OPENRESTY_VERSION}* ngx_* nginx_* openssl-*
 
 git clone https://github.com/yaoweibin/nginx_upstream_check_module.git
 cd nginx_upstream_check_module
-git checkout d6341aeeb8
+git checkout 9aecf15
 cd $BUILD_DIR
 
 #git clone https://github.com/zebrafishlabs/nginx-statsd.git   # dead repo
 git clone https://github.com/apcera/nginx-statsd
 cd nginx-statsd
-git checkout 2147d61dc3
+git checkout b970e40
 cd $BUILD_DIR
 
 getpkg https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz
 tar zxf openresty-${OPENRESTY_VERSION}.tar.gz
 
-cd openresty-${OPENRESTY_VERSION}/bundle/nginx-1.11.2
-patch -p0 < $BUILD_DIR/nginx_upstream_check_module/check_1.11.1+.patch
+cd openresty-${OPENRESTY_VERSION}/bundle/nginx-1.13.6
+patch -p1 < $BUILD_DIR/nginx_upstream_check_module/check_1.12.1+.patch
 cd $BUILD_DIR
+
+# Use openssl 1.0.2 - 1.1.0 on Ubuntu doesn't support SSLv2Hello needed by some
+# old Java 6 clients...
+OPENSSL_VERSION="1.0.2p"
+getpkg https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
+tar zxf openssl-${OPENSSL_VERSION}.tar.gz
+
 cd openresty-${OPENRESTY_VERSION}
 
-./configure --prefix=$VENV \
+./configure --prefix=$VENV/opt/openresty \
+--with-openssl=$BUILD_DIR/openssl-${OPENSSL_VERSION} \
 --with-http_ssl_module \
 --with-http_stub_status_module \
 --with-http_v2_module \
@@ -42,10 +50,8 @@ cd openresty-${OPENRESTY_VERSION}
 $PMAKE
 make install
 
-$VENV/bin/opm get pintsized/lua-resty-http
-$VENV/bin/opm get bungle/lua-resty-session
-$VENV/bin/opm get pronan/lua-resty-datetime
+PATH=$VENV/opt/openresty/bin:$PATH
 
-mv $VENV/nginx/sbin/nginx $VENV/bin/
-rm $VENV/bin/openresty
-rm -R $VENV/nginx
+$VENV/opt/openresty/bin/opm get pintsized/lua-resty-http
+$VENV/opt/openresty/bin/opm get bungle/lua-resty-session
+$VENV/opt/openresty/bin/opm get pronan/lua-resty-datetime

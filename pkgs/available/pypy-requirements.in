@@ -1,0 +1,6 @@
+boto
+boto3
+google-api-python-client
+pip-tools
+requests
+simplejson
