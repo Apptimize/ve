@@ -55,3 +55,5 @@ PATH=$VENV/opt/openresty/bin:$PATH
 $VENV/opt/openresty/bin/opm get pintsized/lua-resty-http
 $VENV/opt/openresty/bin/opm get bungle/lua-resty-session
 $VENV/opt/openresty/bin/opm get pronan/lua-resty-datetime
+
+ln -s $VENV/nginx/sbin/nginx $VENV/bin/nginx
