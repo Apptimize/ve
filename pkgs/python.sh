@@ -1,10 +1,10 @@
-PYTHON_VERSION="2.7.14"
+PYTHON_VERSION="2.7.18"
 
 getpkg http://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
 tar zxf Python-${PYTHON_VERSION}.tgz
 cd Python-${PYTHON_VERSION}
 ./configure --prefix=$VENV --enable-shared --with-system-expat --enable-unicode=ucs4 --enable-optimizaations
-$PMAKE
+make
 make install
 
 cd $BUILD_DIR

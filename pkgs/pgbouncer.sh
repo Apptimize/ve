@@ -4,5 +4,5 @@ getpkg https://pgbouncer.github.io/downloads/files/${PGBOUNCER_VERSION}/pgbounce
 tar zxf pgbouncer-${PGBOUNCER_VERSION}.tar.gz
 cd pgbouncer-${PGBOUNCER_VERSION}
 ./configure --prefix=$VENV
-$PMAKE
+make
 make install

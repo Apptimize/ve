@@ -13,5 +13,5 @@ else
 OPTS="TARGET=linux2628 $OPTS"
 fi
 
-$PMAKE $OPTS install
+make $OPTS install
 rm -f $VENV/sbin/haproxy-systemd-wrapper

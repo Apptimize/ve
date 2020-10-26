@@ -1,1 +1,0 @@
-available/postgresql.sh

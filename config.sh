@@ -15,22 +15,11 @@ if [ "$(uname)" == "Darwin" ];then
     OS="OSX_10.X"
     MOS="OSX"
     PROCS="$(sysctl -n hw.ncpu)"
-elif [ -f /etc/pacman.conf ]; then
-    OS="Arch"
-    MOS="Arch"
-    PROCS=$(grep -c '^processor' /proc/cpuinfo)
 elif [ "$(lsb_release -si)" == "Ubuntu" ]; then
-    ver="$(lsb_release -sr)"
-    if [ "$ver" != "16.04" ] && [ "$ver" != "18.04" ]; then
-        echo "It's recommended to run on an Ubuntu LTS release ($ver)-- do you want to continue?  (Ctrl-C aborts)"
-        read foo
-    fi
     OS="Ubuntu_$ver"
     MOS="Ubuntu"
     PROCS=$(grep -c '^processor' /proc/cpuinfo)
 fi
-
-PMAKE="nice -n 10 make -j $PROCS"
 
 function getpkg() {
     URL=$1
@@ -50,8 +39,9 @@ function getpkg() {
 }
 
 # might want to override these in config_local.sh
-LOG_DIR=/data/log
-RUN_DIR=/data/run
+DATA_DIR=/data
+LOG_DIR="$DATA_DIR/log"
+RUN_DIR="$DATA_DIR/run"
 
 pushd $(dirname $0) > /dev/null
 SCRIPTPATH="$(pwd)"
