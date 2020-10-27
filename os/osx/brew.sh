@@ -65,7 +65,7 @@ if [ ! -e /Applications/Docker.app ]; then
 fi
 
 # test automation stuff
-# $BREW install --HEAD libimobiledevice
+# $BREW install --HEAD libimobiledevice # TODO Delete?
 
 $BREW install \
 carthage \
