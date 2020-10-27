@@ -4,7 +4,7 @@ rm -fR LuaJIT*
 getpkg http://luajit.org/download/LuaJIT-2.0.4.tar.gz
 tar zxf LuaJIT-2.0.4.tar.gz
 cd  LuaJIT-2.0.4
-$PMAKE PREFIX=$VENV
+make PREFIX=$VENV
 make PREFIX=$VENV install
 cd $WD
 

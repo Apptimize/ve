@@ -1,17 +1,6 @@
 #!/bin/bash
 
-if [ "$(which brew)" == "" ]; then
-echo 'Installing homebrew...'
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
 BREW="$(which brew)"
-
-# make sure we run as the user that installed brew
-BREW_USER="$(ls -ld $BREW | awk '{print $3}')"
-if [ "$BREW_USER" != "$USER" ]; then
-BREW="sudo -i -u $BREW_USER $BREW"
-fi
 
 sudo xcodebuild -license accept || true
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer || true
@@ -71,12 +60,12 @@ wget \
 xz \
 zlib
 
-if [ ! -e /Applications/Xcode.app ]; then
+if [ ! -e /Applications/Docker.app ]; then
     $BREW cask install docker
 fi
 
 # test automation stuff
-$BREW install --HEAD libimobiledevice
+# $BREW install --HEAD libimobiledevice
 
 $BREW install \
 carthage \

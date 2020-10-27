@@ -46,5 +46,5 @@ export LUAJIT_INC="$VENV/include/luajit-2.0"
 --add-module=$BUILD_DIR/nginx_upstream_check_module \
 --add-module=$BUILD_DIR/nginx-statsd
 
-$PMAKE
+make
 make install

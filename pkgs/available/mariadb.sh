@@ -21,5 +21,5 @@ cmake . \
 -DWITH_UNIT_TESTS=OFF \
 -DENABLED_LOCAL_INFILE=1
 
-$PMAKE
+make
 make install

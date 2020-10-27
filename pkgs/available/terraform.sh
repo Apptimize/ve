@@ -1,6 +1,7 @@
 TERRAFORM_VERSION="0.9.8"
 
 TERRAFORM_PLATFORM="linux_amd64"
+
 if [ "$MOS" == "OSX" ]; then
 TERRAFORM_PLATFORM="darwin_amd64"
 fi
