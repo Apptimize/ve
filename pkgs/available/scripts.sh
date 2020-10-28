@@ -69,6 +69,7 @@ if [ -e "\$VIRTUAL_ENV/opt/go" ]; then
 PATH="\$PATH:\$VIRTUAL_ENV/opt/go/bin"
 export GOROOT="\$VIRTUAL_ENV/opt/go"
 fi
+
 if [ -e "\$VIRTUAL_ENV/opt/mysql" ]; then
 PATH="\$PATH:\$VIRTUAL_ENV/opt/mysql/bin"
 fi

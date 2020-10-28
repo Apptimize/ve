@@ -30,8 +30,6 @@ elif [ "$(lsb_release -si)" == "Ubuntu" ]; then
     PROCS=$(grep -c '^processor' /proc/cpuinfo)
 fi
 
-PMAKE="nice -n 10 make -j $PROCS"
-
 function getpkg() {
     URL=$1
     DST=$2
@@ -50,8 +48,9 @@ function getpkg() {
 }
 
 # might want to override these in config_local.sh
-LOG_DIR=/data/log
-RUN_DIR=/data/run
+DATA_DIR=/data
+LOG_DIR="$DATA_DIR/log"
+RUN_DIR="$DATA_DIR/run"
 
 pushd $(dirname $0) > /dev/null
 SCRIPTPATH="$(pwd)"

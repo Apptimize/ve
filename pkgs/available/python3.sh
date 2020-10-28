@@ -4,7 +4,7 @@ getpkg http://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSIO
 tar zxf Python-${PYTHON_VERSION}.tgz
 cd Python-${PYTHON_VERSION}
 ./configure --prefix=$VENV --enable-shared --with-system-expat # --enable-optimizations
-$PMAKE
+make
 make install
 
 cd $BUILD_DIR

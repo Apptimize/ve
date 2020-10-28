@@ -11,7 +11,7 @@ fi
 
 ./configure --prefix=$VENV $OPTS
 
-$PMAKE
+make
 make install
 
 $VENV/bin/gem install specific_install

@@ -1,4 +1,4 @@
-OPENRESTY_VERSION="1.13.6.2"
+OPENRESTY_VERSION="1.17.8.1"
 rm -fR openresty-${OPENRESTY_VERSION}* ngx_* nginx_* openssl-*
 
 git clone https://github.com/yaoweibin/nginx_upstream_check_module.git
@@ -6,8 +6,7 @@ cd nginx_upstream_check_module
 git checkout 9aecf15
 cd $BUILD_DIR
 
-#git clone https://github.com/zebrafishlabs/nginx-statsd.git   # dead repo
-git clone https://github.com/apcera/nginx-statsd
+git clone https://github.com/harvesthq/nginx-statsd
 cd nginx-statsd
 git checkout b970e40
 cd $BUILD_DIR
@@ -15,20 +14,25 @@ cd $BUILD_DIR
 getpkg https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz
 tar zxf openresty-${OPENRESTY_VERSION}.tar.gz
 
-cd openresty-${OPENRESTY_VERSION}/bundle/nginx-1.13.6
+cd openresty-${OPENRESTY_VERSION}/bundle/nginx-1.17.8
 patch -p1 < $BUILD_DIR/nginx_upstream_check_module/check_1.12.1+.patch
 cd $BUILD_DIR
 
-# Use openssl 1.0.2 - 1.1.0 on Ubuntu doesn't support SSLv2Hello needed by some
-# old Java 6 clients...
-OPENSSL_VERSION="1.0.2p"
 getpkg https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar zxf openssl-${OPENSSL_VERSION}.tar.gz
+
+SSL_PATCH=openssl-1.1.1c-sess_set_get_cb_yield.patch
+SSL_PATCH_URL="https://raw.githubusercontent.com/openresty/openresty/master/patches/$SSL_PATCH"
+curl -o "${BUILD_DIR}/$SSL_PATCH" $SSL_PATCH_URL
+
+cd ${BUILD_DIR}/openssl-${OPENSSL_VERSION}
+patch -p1 < ${BUILD_DIR}/${SSL_PATCH}
+cd $BUILD_DIR
 
 cd openresty-${OPENRESTY_VERSION}
 
 ./configure --prefix=$VENV/opt/openresty \
---with-openssl=$BUILD_DIR/openssl-${OPENSSL_VERSION} \
+--with-openssl=../openssl-${OPENSSL_VERSION} \
 --with-http_ssl_module \
 --with-http_stub_status_module \
 --with-http_v2_module \
@@ -47,7 +51,7 @@ cd openresty-${OPENRESTY_VERSION}
 --add-module=$BUILD_DIR/nginx_upstream_check_module \
 --add-module=$BUILD_DIR/nginx-statsd
 
-$PMAKE
+make
 make install
 
 PATH=$VENV/opt/openresty/bin:$PATH
