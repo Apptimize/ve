@@ -14,6 +14,10 @@ cd $BUILD_DIR
 getpkg https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz
 tar zxf openresty-${OPENRESTY_VERSION}.tar.gz
 
+cd openresty-${OPENRESTY_VERSION}/bundle/nginx-1.17.8
+patch -p1 < $BUILD_DIR/nginx_upstream_check_module/check_1.12.1+.patch
+cd $BUILD_DIR
+
 getpkg https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar zxf openssl-${OPENSSL_VERSION}.tar.gz
 
