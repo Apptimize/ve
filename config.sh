@@ -15,10 +15,6 @@ if [ "$(uname)" == "Darwin" ];then
     OS="OSX_10.X"
     MOS="OSX"
     PROCS="$(sysctl -n hw.ncpu)"
-elif [ -f /etc/pacman.conf ]; then
-    OS="Arch"
-    MOS="Arch"
-    PROCS=$(grep -c '^processor' /proc/cpuinfo)
 elif [ "$(lsb_release -si)" == "Ubuntu" ]; then
     ver="$(lsb_release -sr)"
     if [ "$ver" != "16.04" ] && [ "$ver" != "18.04" ]; then
