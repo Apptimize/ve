@@ -1,3 +1,4 @@
+APPTIMIZE_VE_ROOT=$HOME/apptimize-ve
 # install prefix
 VENV="/ave"
 DATA_DIR="/data"
