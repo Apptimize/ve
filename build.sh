@@ -18,22 +18,18 @@ sudo rm -fR $VENV $PKG_CACHE $DATA_DIR
 if [ "$MOS" == "OSX" ]; then
 rm -fR ~/Library/Caches/pip
 fi
-else
-echo 'Doing an incremental build, are you sure?  (Ctrl-C to abort)'
-read foo
 fi
 
 sudo rm -fR $VENV/ve $BUILD_DIR
 sudo mkdir -p $BUILD_DIR $VENV/lib $VENV/include $LOG_DIR $RUN_DIR
-sudo chown -R $USER:$GROUP $VENV $BUILD_DIR $LOG_DIR $RUN_DIR
+sudo chown -R $USER:$GROUP $APPTIMIZE_VE_ROOT$VENV $BUILD_DIR $LOG_DIR $RUN_DIR
 
 # make everything world readable
-sudo chmod -R a+r $VENV
+sudo chmod -R a+r $APPTIMIZE_VE_ROOT$VENV
 
 # some of the build tools point various /var stuff at /data -- make sure it
 # exists
-sudo mkdir -p $DATA_DIR
-sudo chown $USER:$GROUP $DATA_DIR
+sudo chown $USER:$GROUP $APPTIMIZE_VE_ROOT$DATA_DIR
 
 # copy snapshot of these scripts to the venv for running deps.sh on new hosts
 cp -a . $VENV/ve

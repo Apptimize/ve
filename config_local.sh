@@ -1,7 +1,7 @@
-# install prefix
 APPTIMIZE_VE_ROOT=$HOME/apptimize-ve
-VENV="$APPTIMIZE_VE_ROOT/ave"
-DATA_DIR="$APPTIMIZE_VE_ROOT/data"
+# install prefix
+VENV="/ave"
+DATA_DIR="/data"
 # cache package downloads
 PKG_CACHE="/tmp/ave-pkg"
 
